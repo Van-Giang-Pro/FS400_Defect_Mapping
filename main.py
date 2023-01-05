@@ -9,27 +9,48 @@ class Point:
 
 class Rectangle:
 
-	def __init__(self, point1, point2):
-		self.point1 = point1
-		self.point2 = point2
+	def __init__(self, orgin, dimensions):
+		self.orgin = orgin
+		self.demensions = dimensions
 
 
 class GuiRectangle(Rectangle):
 
 	def draw_rectangle(self):
+		turtle.Screen().bgcolor('black')
 		turtle.screensize(canvwidth=300, canvheight=300)
+		turtle.pencolor('green')
 		turtle.penup()
-		turtle.goto(self.point1.x, self.point1.y)
+		turtle.goto(self.orgin.x, self.orgin.y)
 		turtle.pendown()
-		turtle.goto(self.point2.x, self.point1.y)
-		turtle.goto(self.point2.x, self.point2.y)
-		turtle.goto(self.point1.x, self.point2.y)
-		turtle.goto(self.point1.x, self.point1.y)
+		turtle.forward(self.demensions.x-130)
+		turtle.right(90)
+		turtle.forward(20)
+		turtle.left(90)
+		turtle.forward(10)
+		turtle.left(90)
+		turtle.forward(20)
+		turtle.right(90)
+		turtle.forward(self.demensions.x-80)
+		turtle.right(90)
+		turtle.forward(self.demensions.y)
+		turtle.right(90)
+		turtle.forward(self.demensions.x-80)
+		turtle.right(90)
+		turtle.forward(20)
+		turtle.left(90)
+		turtle.forward(10)
+		turtle.left(90)
+		turtle.forward(20)
+		turtle.right(90)
+		turtle.forward(self.demensions.x-130)
+		turtle.right(90)
+		turtle.forward(self.demensions.y)
 		turtle.done()
 
 
-point1 = Point(0, 0)
-point2 = Point(200, 120)
-rectangle = Rectangle(point1, point2)
-GuiRectangle = GuiRectangle(point1, point2)
+orgin = Point(-100, 60)
+dimensions = Point(200, 120)
+rectangle = Rectangle(orgin, dimensions)
+GuiRectangle = GuiRectangle(orgin, dimensions)
 GuiRectangle.draw_rectangle()
